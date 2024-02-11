@@ -2,8 +2,9 @@ package main
 
 import (
 	"log"
-	"smart-blog/blog/articles/routes"
 	"smart-blog/database"
+	articleRoutes "smart-blog/blog/articles/routes" // Alias for articles routes package
+    newsRoutes "smart-blog/blog/news/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +21,8 @@ func main() {
 		c.Next()
 	})
 
-	routes.RegisterArticleRoutes(r)
+	articleRoutes.RegisterArticleRoutes(r)
+	newsRoutes.RegisterNewsRoutes(r)
 
 	log.Println("Connected to the database successfully!", db)
 
